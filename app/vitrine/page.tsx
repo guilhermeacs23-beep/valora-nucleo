@@ -4,6 +4,9 @@ const PECAS = [
   { href: '/vitrine/grade-mes', nome: 'Grade do mês',
     d: 'O calendário da agenda. Um profissional ou vários, dias de atendimento configuráveis.',
     de: 'extraída de Studio J.C · /agenda' },
+  { href: '/vitrine/grade-dia', nome: 'Grade do dia',
+    d: 'A mesma agenda por dia, com uma coluna por profissional. Com uma cadeira só, vira a agenda do estúdio.',
+    de: 'extraída de Barbearia · /painel/agenda' },
 ];
 
 export default function Vitrine() {
