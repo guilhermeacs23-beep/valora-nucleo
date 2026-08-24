@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 const PECAS = [
+  { href:'/vitrine/casca',      n:'Moldura (casca)',    d:'Barra lateral recolhível, busca, relógio e usuário. As colunas do barracão: iguais em todo cliente.', de:'Studio J.C · AdminLayoutClient + TopBar' },
   { href:'/vitrine/dashboard',  n:'Dashboard do dono',  d:'Indicadores, calendário do mês e a lista de agendamentos.', de:'Studio J.C · /agenda' },
   { href:'/vitrine/grade-mes',  n:'Grade do mês',       d:'O calendário da agenda. Dias de atendimento e cor da marca configuráveis.', de:'Studio J.C · /agenda' },
   { href:'/vitrine/grade-dia',  n:'Grade do dia',       d:'Uma coluna por profissional. Com uma cadeira só, vira a agenda do estúdio.', de:'Barbearia · /painel/agenda' },

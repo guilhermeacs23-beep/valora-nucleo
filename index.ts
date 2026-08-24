@@ -3,6 +3,13 @@ export { default as GradeMes } from './componentes/GradeMes';
 export type {
   GradeMesProps, DiaDaGrade, Slot, EstadoSlot, Modo,
 } from './componentes/GradeMes';
+export { default as Casca } from './componentes/Casca';
+export type { CascaProps, GrupoMenu, ItemMenu, Achado } from './componentes/Casca';
+export { default as Cartoes } from './componentes/Cartoes';
+export type { Cartao } from './componentes/Cartoes';
+export { default as Tabela } from './componentes/Tabela';
+export type { Coluna } from './componentes/Tabela';
+export { default as Pagina } from './componentes/Pagina';
 export { default as GradeDia } from './componentes/GradeDia';
 export type {
   GradeDiaProps, ColunaAgenda, CelulaAgenda,
