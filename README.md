@@ -82,3 +82,22 @@ usam o mesmo arquivo, 66 kB.
 O fundo troca sozinho a cada 7 dias, rodando entre 12 fotos. Para usar outras,
 passe `fundos={[...]}`.
 
+### Só a moldura (MolduraValora)
+
+Quando o sistema já tem a sua tela de login com regras próprias, use só a
+moldura e ponha o cartão dele dentro. O visual fica igual ao dos outros e
+nenhuma regra é tocada.
+
+```tsx
+import { MolduraValora } from 'valora-nucleo';
+
+<MolduraValora produto="Studio J.C">
+  <div className="...o cartão do sistema, como já era...">
+    {/* formulário, regras, links — tudo intacto */}
+  </div>
+</MolduraValora>
+```
+
+Foi o caso do Studio J.C.: login por e-mail ou celular, troca de senha na
+própria tela e três destinos diferentes depois de entrar. Trocar a tela
+inteira levaria essas regras junto.

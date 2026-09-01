@@ -68,6 +68,87 @@ export type LoginValoraProps = {
   fundos?: string[]
 }
 
+/**
+ * Só a moldura: fundo que troca sozinho, logo da Valora, nome do produto e a
+ * vitrine. O que vai no lugar do cartão é problema de cada sistema.
+ *
+ * Existe porque o Studio J.C. tem regras que a tela padrão não tem — login
+ * por e-mail ou por celular, troca de senha ali mesmo, três destinos
+ * diferentes depois de entrar. Trocar a tela inteira levaria essas regras
+ * junto. Com a moldura separada, o sistema ganha o visual novo e o formulário
+ * dele continua exatamente como está.
+ */
+export function MolduraValora({
+  produto,
+  tagline,
+  logoSrc = '/valora.png',
+  vitrine = true,
+  fundos,
+  children,
+}: {
+  produto?: string
+  tagline?: string
+  logoSrc?: string
+  vitrine?: boolean
+  fundos?: string[]
+  children: React.ReactNode
+}) {
+  return (
+    <div
+      style={{
+        position: 'relative', display: 'flex', alignItems: 'center',
+        minHeight: '100vh', overflow: 'hidden',
+        backgroundImage: `url(${fundoDaSemana(fundos)})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+      }}
+    >
+      <style>{`
+        @media (max-width: 900px) {
+          .valora-marca { display: none !important; }
+          .valora-card-area { padding: 0 6% !important; flex: 1 !important;
+                              display: flex !important; justify-content: center !important; }
+        }
+      `}</style>
+
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,10,25,0.42)' }} />
+
+      {vitrine && <VitrineValora />}
+
+      <div
+        className="valora-marca"
+        style={{
+          position: 'relative', zIndex: 10, flex: 1,
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          padding: '0 0 0 12%',
+        }}
+      >
+        <img
+          src={logoSrc}
+          alt="Valora Business Technology"
+          style={{ width: 'min(360px, 60%)', height: 'auto', filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.45))' }}
+        />
+        {produto && (
+          <p style={{
+            margin: '18px 0 0', fontSize: 22, fontWeight: 600,
+            color: 'rgba(255,255,255,0.92)',
+            textShadow: '0 2px 12px rgba(0,0,0,0.5)', letterSpacing: '-0.01em',
+          }}>{produto}</p>
+        )}
+        {tagline && (
+          <p style={{
+            margin: '4px 0 0', fontSize: 15,
+            color: 'rgba(255,255,255,0.70)', textShadow: '0 1px 8px rgba(0,0,0,0.4)',
+          }}>{tagline}</p>
+        )}
+      </div>
+
+      <div className="valora-card-area" style={{ position: 'relative', zIndex: 10, padding: '0 72px 0 0', flexShrink: 0 }}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 export function LoginValora({
   produto,
   tagline,
@@ -110,67 +191,7 @@ export function LoginValora({
   }
 
   return (
-    <div
-      style={{
-        position: 'relative', display: 'flex', alignItems: 'center',
-        minHeight: '100vh', overflow: 'hidden',
-        backgroundImage: `url(${fundoDaSemana(fundos)})`,
-        backgroundSize: 'cover', backgroundPosition: 'center',
-      }}
-    >
-      <style>{`
-        @media (max-width: 900px) {
-          .valora-marca { padding-left: 8% !important; }
-          .valora-card-area { padding: 0 8% !important; }
-          .valora-card { width: 100% !important; max-width: 400px; }
-        }
-      `}</style>
-
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,10,25,0.42)' }} />
-
-      {vitrine && <VitrineValora />}
-
-      {/* ── A casa, e depois o produto ── */}
-      <div
-        className="valora-marca"
-        style={{
-          position: 'relative', zIndex: 10, flex: 1,
-          display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          padding: '0 0 0 12%',
-        }}
-      >
-        <img
-          src={logoSrc}
-          alt="Valora Business Technology"
-          style={{ width: 'min(360px, 60%)', height: 'auto', filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.45))' }}
-        />
-
-        {produto && (
-          <p
-            style={{
-              margin: '18px 0 0', fontSize: 22, fontWeight: 600,
-              color: 'rgba(255,255,255,0.92)',
-              textShadow: '0 2px 12px rgba(0,0,0,0.5)', letterSpacing: '-0.01em',
-            }}
-          >
-            {produto}
-          </p>
-        )}
-
-        {tagline && (
-          <p
-            style={{
-              margin: '4px 0 0', fontSize: 15,
-              color: 'rgba(255,255,255,0.70)', textShadow: '0 1px 8px rgba(0,0,0,0.4)',
-            }}
-          >
-            {tagline}
-          </p>
-        )}
-      </div>
-
-      {/* ── Card ── */}
-      <div className="valora-card-area" style={{ position: 'relative', zIndex: 10, padding: '0 72px 0 0', flexShrink: 0 }}>
+    <MolduraValora produto={produto} tagline={tagline} logoSrc={logoSrc} vitrine={vitrine} fundos={fundos}>
         <div
           className="valora-card"
           style={{
@@ -265,8 +286,7 @@ export function LoginValora({
             </>
           )}
         </div>
-      </div>
-    </div>
+    </MolduraValora>
   )
 }
 

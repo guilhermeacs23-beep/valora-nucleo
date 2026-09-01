@@ -14,7 +14,7 @@ export { default as GradeDia } from './componentes/GradeDia';
 export type {
   GradeDiaProps, ColunaAgenda, CelulaAgenda,
 } from './componentes/GradeDia';
-export { default as LoginValora, fundoDaSemana } from './componentes/LoginValora';
+export { default as LoginValora, MolduraValora, fundoDaSemana } from './componentes/LoginValora';
 export type { LoginValoraProps } from './componentes/LoginValora';
 export { default as VitrineValora, PRODUTOS_VALORA } from './componentes/VitrineValora';
 export type { ProdutoValora } from './componentes/VitrineValora';
