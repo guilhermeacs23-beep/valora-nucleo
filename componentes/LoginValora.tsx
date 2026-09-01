@@ -116,6 +116,21 @@ export function MolduraValora({
           .valora-marca { display: none !important; }
           .valora-card-area { padding: 0 6% !important; flex: 1 !important;
                               display: flex !important; justify-content: center !important; }
+          /*
+            A regra do cartao. Ela existia na v0.4 e eu a perdi na v0.5.0, ao
+            reescrever esta media query quando o cartao saiu daqui e virou
+            children. Sem ela o cartao fica com os 400px fixos do estilo
+            inline; numa tela de 375px ele estoura, e como a moldura tem
+            overflow:hidden nao aparece nem barra de rolagem — o lado direito
+            simplesmente some, com o botao "Criar conta" cortado no meio.
+
+            Vale para qualquer filho que use a classe .valora-card, nao so
+            para o formulario padrao. Quem traz cartao proprio (o Studio J.C)
+            nao usa a classe e nao e afetado.
+          */
+          .valora-card { width: 100% !important; max-width: 400px !important;
+                         box-sizing: border-box !important;
+                         padding: 32px 24px !important; }
         }
       `}</style>
 
@@ -204,7 +219,8 @@ export function LoginValora({
         <div
           className="valora-card"
           style={{
-            width: 400, background: '#fff', borderRadius: 24, padding: '40px 36px',
+            width: 400, boxSizing: 'border-box',
+            background: '#fff', borderRadius: 24, padding: '40px 36px',
             boxShadow: '0 32px 80px rgba(0,0,0,0.40), 0 8px 24px rgba(0,0,0,0.18)',
           }}
         >
