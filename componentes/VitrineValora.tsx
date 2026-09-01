@@ -111,6 +111,7 @@ export function VitrineValora({
   return (
     <div
       aria-label="Outros produtos da Valora"
+      className="valora-vitrine"
       style={{
         position: 'absolute',
         top: 28,
@@ -119,6 +120,23 @@ export function VitrineValora({
         maxWidth: 'min(560px, calc(100vw - 56px))',
       }}
     >
+      {/*
+        No telefone estes quadrinhos nao cabem. Eles sao `position: absolute`
+        no canto superior esquerdo e, numa tela de 360px, quebram em tres
+        linhas e pousam em cima do cartao de login — foi o que o Guilherme viu
+        no Lead+ e no Studio J.C. Nao da para so encolher: cinco cards com
+        titulo e descricao precisam de largura que o celular nao tem.
+
+        Entao somem, no mesmo ponto (900px) em que a marca ja sumia. Quem
+        entra pelo celular quer entrar, nao ler o catalogo da casa; a venda
+        cruzada continua no desktop, onde ha espaco de sobra.
+      */}
+      <style>{`
+        @media (max-width: 900px) {
+          .valora-vitrine { display: none !important; }
+        }
+      `}</style>
+
       <p
         style={{
           margin: '0 0 10px',
