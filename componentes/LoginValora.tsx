@@ -96,6 +96,15 @@ export function MolduraValora({
   return (
     <div
       style={{
+        // width 100% nao e enfeite. A moldura e um item flex dentro do layout
+        // de quem a usa, e no Studio J.C esse layout e um
+        // `flex items-center justify-center`. Sem largura declarada, o item
+        // encolhe ate o tamanho do conteudo: 291px numa janela de 774px. O
+        // fundo da semana virou uma faixa no meio da tela e o papel de parede
+        // do proprio app (o `bg-fractal.jpg` dourado do Studio) apareceu dos
+        // dois lados. No Lead+ nao deu porque la o pai nao centraliza — ou
+        // seja, o erro so aparecia no segundo sistema a usar a peca.
+        width: '100%',
         position: 'relative', display: 'flex', alignItems: 'center',
         minHeight: '100vh', overflow: 'hidden',
         backgroundImage: `url(${fundoDaSemana(fundos)})`,
