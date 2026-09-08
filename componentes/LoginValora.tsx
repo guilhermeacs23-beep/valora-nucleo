@@ -23,20 +23,27 @@ import { VitrineValora } from './VitrineValora'
      <LoginValora onEntrar={...} />   ← sem produto: só a Valora
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* Fundo que troca sozinho a cada 7 dias. Mantido igual ao que já rodava no
-   Lead+: paisagens e bichos, nada que canse quem entra todo dia. */
+/* Fundo que troca sozinho a cada 7 dias: paisagens e bichos, nada que canse
+   quem entra todo dia.
+
+   Duas saíram em 08/09, depois de conferir as doze uma a uma no navegador:
+   uma foto de rack de servidores, que não é paisagem nem bicho e era
+   justamente a da semana, e uma URL quebrada que abria a tela sem fundo
+   nenhum — invisível no dia a dia porque só aparecia de doze em doze semanas.
+
+   Quem mexer aqui: abra a imagem antes de commitar. Foto do Unsplash some. */
 const FUNDOS = [
   'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85',
   'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=1920&q=85',
   'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=85',
   'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1920&q=85',
   'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=85',
-  'https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=1920&q=85',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=85',
   'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=85',
   'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1920&q=85',
   'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1920&q=85',
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=85',
-  'https://images.unsplash.com/photo-1439853949212-36089c04f669?w=1920&q=85',
+  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1920&q=85',
   'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=1920&q=85',
 ]
 
