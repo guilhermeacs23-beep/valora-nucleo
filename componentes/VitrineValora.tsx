@@ -151,13 +151,19 @@ export function VitrineValora({
         {titulo}
       </p>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      {/* Uma fileira so. Antes quebrava no quinto card, e o motivo nao era o
+          maxWidth: `width: 104` sem box-sizing nao contava o padding de 11px
+          de cada lado, entao cada quadrinho ocupava 126px de verdade. Cinco
+          davam 662px num container de 560. Com border-box, 104 e 104. */}
+      <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 8 }}>
         {produtos.map((p) => (
           <div
             key={p.id}
             title={`${p.nome} — ${p.descricao}`}
             style={{
               width: 104,
+              boxSizing: 'border-box',
+              flex: '0 0 auto',
               padding: '10px 11px 11px',
               borderRadius: 12,
               background: `linear-gradient(150deg, ${p.cor[0]}, ${p.cor[1]})`,
