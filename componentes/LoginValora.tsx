@@ -31,6 +31,11 @@ import { VitrineValora } from './VitrineValora'
    justamente a da semana, e uma URL quebrada que abria a tela sem fundo
    nenhum — invisível no dia a dia porque só aparecia de doze em doze semanas.
 
+   Em 22/09/2026 saiu o gato de parede verde, a pedido dele. Tirar um item
+   desloca o resto -- o indice e o resto da divisao pelo tamanho da lista --
+   entao a semana corrente passa a mostrar outra foto na hora, que era o
+   efeito desejado.
+
    Quem mexer aqui: abra a imagem antes de commitar. Foto do Unsplash some. */
 const FUNDOS = [
   'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85',
@@ -40,7 +45,6 @@ const FUNDOS = [
   'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=85',
   'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=85',
   'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=85',
-  'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1920&q=85',
   'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1920&q=85',
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=85',
   'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1920&q=85',
