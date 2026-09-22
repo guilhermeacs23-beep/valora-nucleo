@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { VitrineValora } from './VitrineValora'
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -52,6 +52,32 @@ export function fundoDaSemana(lista: string[] = FUNDOS): string {
   return lista[semana % lista.length]
 }
 
+/* A conta acima está certa — o que estava errado era ONDE ela rodava.
+
+   A tela de login é pré-renderizada no build. `Date.now()` rodava no
+   servidor, no dia da publicação, e a URL saía gravada no atributo `style`
+   do HTML. Depois disso a foto só mudava quando o app era publicado de novo:
+   trocava por deploy, não por semana.
+
+   Medido em 22/09/2026, quando a semana certa era a #7:
+     hub-valora            → #5   (publicado na semana 5)
+     rustic-burgger        → #5   (idem)
+     sttetic-three-center  → #7   ✓ só porque tinha sido publicado naquele dia
+   Três apps, mesmo código, fotos diferentes — pela data do build.
+
+   A hidratação não conserta sozinha: o React reaproveita o HTML do servidor e
+   não repinta um `style` inline que nenhuma mudança de estado tocou.
+
+   Então o fundo virou estado, escolhido DEPOIS de montar, quando existe o
+   relógio de quem está olhando. Enquanto não monta fica só o azul escuro da
+   marca — meio segundo de cor sólida é melhor que a foto errada por semanas.
+*/
+function useFundoDaSemana(lista?: string[]): string | null {
+  const [fundo, setFundo] = useState<string | null>(null)
+  useEffect(() => { setFundo(fundoDaSemana(lista)) }, [lista])
+  return fundo
+}
+
 /* Azuis tirados do próprio logo: o ciano das linhas e o azul escuro do "V".
    O botão é da Valora, não do produto — senão cada sistema quer a sua cor e
    a peça deixa de ser única. */
@@ -100,6 +126,8 @@ export function MolduraValora({
   fundos?: string[]
   children: React.ReactNode
 }) {
+  const fundo = useFundoDaSemana(fundos)
+
   return (
     <div
       style={{
@@ -114,7 +142,9 @@ export function MolduraValora({
         width: '100%',
         position: 'relative', display: 'flex', alignItems: 'center',
         minHeight: '100vh', overflow: 'hidden',
-        backgroundImage: `url(${fundoDaSemana(fundos)})`,
+        backgroundColor: AZUL_ESCURO,
+        backgroundImage: fundo ? `url(${fundo})` : undefined,
+        transition: 'background-image 300ms ease-in',
         backgroundSize: 'cover', backgroundPosition: 'center',
       }}
     >
